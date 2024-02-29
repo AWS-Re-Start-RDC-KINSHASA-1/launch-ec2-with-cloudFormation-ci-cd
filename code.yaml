@@ -1,0 +1,12 @@
+version: 0.2  # Corrected version
+phases:
+  install:
+    commands:
+      - npm install --silent
+  build:
+    commands:
+      - aws cloudformation package --template-file launch-ec2-target-group.yaml --s3-bucket launch-ec2-cloud-formation-ci-cd --output-template-file output-template.yaml
+artifacts:
+  type: zip
+  files:
+    - '**/*'
